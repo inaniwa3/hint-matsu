@@ -16,12 +16,12 @@ function init () {
   while (true) {
     const idx = Math.floor(Math.random() * Object.keys(KANJI).length);
     const key = Object.keys(KANJI)[idx];
-    if (ans_roman === '')
+    if (ans_roman === '')  // 一文字目
     {
       for (let i = 0; i < KANJI[key][1].length; i++)
       {
         const key_roman = KANJI[key][1][i][0];
-        if (key_roman in ROMAN)
+        if (key_roman in ROMAN)  // 音読みのみ
         {
           if (ans_roman === '')
           {
@@ -37,7 +37,7 @@ function init () {
         }
       }
     }
-    else
+    else  // 二文字目
     {
       if (ans !== key)  // 同じ文字の連続にはしない
       {
@@ -53,7 +53,7 @@ function init () {
 
 // hint
 function hint (rep) {
-  let h = [false, false, false];
+  let h = [false, false, false]; // ランプ 小・中・大
   if (rep.length !== 2)
     return h;
 
@@ -79,7 +79,7 @@ function hint (rep) {
       }
     }
   }
-  if (rep.includes(ans[0]) || rep.includes(ans[1]))  // 位置は見ない
+  if (rep.includes(ans[0]) || rep.includes(ans[1]))  // 位置は考慮しない
   {
     h[2] = true;
   }
