@@ -1,4 +1,4 @@
-var botui = new BotUI('hint-matsu');
+let botui = new BotUI('hint-matsu');
 
 // global game variables
 let games = 0;
@@ -103,16 +103,7 @@ function main () {
     action: {},
   }).then(function (res) {
     games += 1;
-
     const h = hint(res.value);
-    let h_and = true;
-    let h_or = false;
-    for (let i = 0; i < h.length; i++)
-    {
-      h_and &= h[i];
-      h_or |= h[i];
-    }
-    
     if (res.value === '答え')
     {
       games -= 1;
@@ -123,11 +114,11 @@ function main () {
       });
       main();
     }
-    else if (h_and)
+    else if (res.value === ans)
     {
       goodbye();
     }
-    else if (!h_or)
+    else if (!h[0] && !h[1] && !h[2])
     {
       botui.message.add({
         delay: 500,
