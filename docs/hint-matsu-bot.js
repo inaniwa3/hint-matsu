@@ -123,7 +123,7 @@ function main () {
       botui.message.add({
         delay: 500,
         type: 'html',
-        content: '...',
+        content: '⋯。',
       });
       main();
     }
